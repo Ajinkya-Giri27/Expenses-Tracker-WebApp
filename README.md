@@ -47,3 +47,11 @@ Make sure you have:
 git clone https://github.com/Ajinkya-Giri27/Expenses-Tracker-WebApp.git
 cd Expenses-Tracker-WebApp
 ```
+
+### 2. Run the Application
+
+Use Docker Compose to build and run the containers:
+
+```bash
+docker-compose up --build
+```
