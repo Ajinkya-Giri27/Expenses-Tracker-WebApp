@@ -55,3 +55,11 @@ Use Docker Compose to build and run the containers:
 ```bash
 docker-compose up --build
 ```
+
+### 3. Verify
+
+Visit the following URL in your browser:
+
+```bash
+http://<your-ec2-public-ip>:8080
+```
