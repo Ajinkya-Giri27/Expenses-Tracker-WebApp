@@ -36,8 +36,9 @@ The application consists of a Java backend and a MySQL database.
 
 Make sure you have:
 
-- [Docker](https://docs.docker.com/get-docker/) installed
-- [Git](https://git-scm.com/) installed
+- AWS Account
+- [Docker & Docker-compose installed
+- [Git installed
 
 ---
 
