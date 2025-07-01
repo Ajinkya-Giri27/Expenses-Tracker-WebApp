@@ -1,4 +1,4 @@
-# 🧾 Expenses Tracker WebApp (Dockerized Java + MySQL)
+# Expenses Tracker WebApp (Dockerized Java + MySQL)
 
 This project demonstrates how to containerize a Java-based Expense Tracker web application using **Docker**, **Docker Compose**, and **Multi-stage Docker builds**.
 
@@ -9,7 +9,7 @@ It includes:
 - Optimized multi-stage Docker builds
 - Docker Compose for service orchestration
 
-## 📖 Introduction
+## Introduction
 
 This project shows how to optimize Docker workflows using:
 
@@ -20,7 +20,7 @@ The application consists of a Java backend and a MySQL database.
 
 ---
 
-## 🛠️ Key Technologies
+## Key Technologies
 
 - Java 17 (Spring Boot)
 - Maven 3.8.3
@@ -30,15 +30,15 @@ The application consists of a Java backend and a MySQL database.
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 
 Make sure you have:
 
 - AWS Account
-- [Docker & Docker-compose installed
-- [Git installed
+- Docker & Docker-compose installed
+- Git installed
 
 ---
 
