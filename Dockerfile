@@ -17,7 +17,7 @@ RUN mvn clean install -DskipTests=true
 #--------------------------------------------
 
 # Use a lightweight Java base image
-FROM openjdk:17-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
