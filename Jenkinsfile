@@ -18,7 +18,7 @@ pipeline{
 
    stage("Deploy"){
       steps{
-        sh "docker run -d -p 8080:8080 expenses-tracker"
+        sh "docker compose up -d"
       }
     }
 
