@@ -1,0 +1,40 @@
+# ==============================
+# MySQL / Database runtime data
+# ==============================
+mysql-data/
+**/#ib_*
+**/*.dblwr
+**/*.ibd
+**/*.ib_logfile*
+**/ibdata*
+
+# ==============================
+# Build & dependency artifacts
+# ==============================
+target/
+node_modules/
+dist/
+build/
+
+# ==============================
+# VCS & editor files
+# ==============================
+.git/
+.gitignore
+.vscode/
+.idea/
+*.iml
+
+# ==============================
+# OS & temp files
+# ==============================
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Jenkins & CI artifacts
+# ==============================
+**/workspace/
