@@ -1,8 +1,7 @@
 version: "3.8"
 services:
   java_app:
-    build:
-      context: .
+    image : "ajinkyagiri27/expenses-tracker:latest"
     container_name: "expensesapp"
     environment:
       SPRING_DATASOURCE_USERNAME: root
