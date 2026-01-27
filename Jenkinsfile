@@ -12,7 +12,7 @@ pipeline{
 
     stage("Build"){
       steps{
-        sh "docker build -t Expenses-Tracker .
+        sh "docker build -t Expenses-Tracker ."
       }
     }
 
