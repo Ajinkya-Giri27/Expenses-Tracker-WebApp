@@ -16,6 +16,21 @@ pipeline{
       }
     }
 
+    stage("Push to Docker Hub"){
+      steps{
+       withCredentials([usernamePassword(
+         credentialsId : "dockerHubCreds" ,
+         passwordVariable : "dockerHubPass" ,
+         usernameVariable : "dockerHubUser"
+         )]){
+
+         sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+         sh "docker image tag expenses-tracker ${env.dockerHubUser}/expenses-tracker"
+         sh "docker push ${env.dockerHubUser}/expenses-tracker:latest"
+       }
+      }
+    }
+
    stage("Deploy"){
       steps{
         sh "docker compose up -d"
