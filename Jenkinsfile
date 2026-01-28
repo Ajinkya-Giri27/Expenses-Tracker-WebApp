@@ -6,7 +6,12 @@ pipeline{
     SCANNER_HOME = tool "sonar-scanner"
   }
   stages{
-    
+
+    stages("clean workspace"){
+      steps{
+        cleanWs()
+      }
+    }
     stage("code"){
       steps{
         git url :"https://github.com/Ajinkya-Giri27/Expenses-Tracker-WebApp.git/" , branch : "main"
