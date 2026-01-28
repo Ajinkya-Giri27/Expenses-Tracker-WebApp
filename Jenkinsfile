@@ -7,11 +7,6 @@ pipeline{
   }
   stages{
 
-    stage("clean workspacee"){
-      steps{
-        cleanWs()
-      }
-    }
     
     stage("code"){
       steps{
