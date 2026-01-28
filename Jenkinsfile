@@ -8,23 +8,32 @@ pipeline{
   stages{
 
     
-    stage("codee"){
+    stage("code"){
       steps{
         git url :"https://github.com/Ajinkya-Giri27/Expenses-Tracker-WebApp.git/" , branch : "main"
       }
     }
 
     
-    stage("SonarQube Analysiss"){
+    stage("SonarQube Analysis"){
       steps{
         withSonarQubeEnv("sonar")
         {
-           sh "chmod +x mvnw"
-            sh "./mvnw clean package -DskipTests"
+          sh "chmod +x mvnw"
+          sh "./mvnw clean package -DskipTests"
           sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Expenses-tracker -Dsonar.projectKey=Expensese-tracker -Dsonar.java.binaries=target/classes"
         }
       }
     }
+
+    stage("SonarGate Analysis"){
+      steps{
+        timeout (time:2 , unit:"MINUTES"){
+          waitForQuaityGate abortPileline:false
+        }
+      }
+    }
+    
 
     stage("Build"){
       steps{
