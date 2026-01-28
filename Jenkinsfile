@@ -2,6 +2,9 @@ pipeline{
   agent { 
         label 'dev' 
     }
+  environment{
+    SCANNER_HOME = tool "sonar-scanner"
+  }
   stages{
     
     stage("code"){
@@ -10,6 +13,16 @@ pipeline{
       }
     }
 
+     stage("SonarQube Analysis"){
+      steps{
+        withSonarQubeEnv("sonar-server")
+        {
+          sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName = expenses-tracker -Dsonar.projectKey = expensese-tracker"
+        }
+      }
+    }
+
+    
     stage("Build"){
       steps{
         sh "docker build -t expenses-tracker ."
