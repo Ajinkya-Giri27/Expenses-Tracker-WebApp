@@ -36,24 +36,18 @@ pipeline{
 
 stage('Dependency Check') {
     steps {
-        sh '''
-        dependency-check \
-          --project "Expenses-Tracker" \
-          --scan . \
-          --format HTML \
-          --out dependency-check-report \
-          --disableAssembly
-        '''
-        publishHTML(target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: 'dependency-check-report',
-            reportFiles: 'dependency-check-report.html',
-            reportName: 'OWASP Dependency Check'
-        ])
+        dependencyCheck additionalArguments: '''
+            --scan .
+            --format HTML
+            --out dependency-check-report
+            --disableAssembly
+        ''',
+        odcInstallation: 'dc'
+
+        dependencyCheckPublisher pattern: 'dependency-check-report/dependency-check-report.html'
     }
 }
+
 
     
 
