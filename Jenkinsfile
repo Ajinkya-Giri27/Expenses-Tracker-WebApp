@@ -36,7 +36,8 @@ pipeline{
 
   stage("Owasp Dependency Check"){
     steps{
-      echo "heloo owasp"
+      dependencyCheck additionalarguments : " --scan ./ " , odcInstallation : "dc"
+      dependencyCheckPublisher : "**/dependency-check-report.xml"
     }
   }
     
