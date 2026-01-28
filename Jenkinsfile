@@ -15,10 +15,21 @@ pipeline{
     }
 
     
+stage('Clean Package') {
+    steps {
+        sh '''
+        chmod +x mvnw
+        ./mvnw clean package -DskipTests
+        '''
+    }
+}
+    
     stage("SonarQube Analysis"){
       steps{
+        
         withSonarQubeEnv("sonar")
         {
+          sh " rm -rf .scannerwork || true "
           sh "chmod +x mvnw"
           sh "./mvnw clean package -DskipTests"
           sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Expenses-tracker -Dsonar.projectKey=Expensese-tracker -Dsonar.java.binaries=target/classes"
