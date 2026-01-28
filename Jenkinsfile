@@ -10,6 +10,7 @@ pipeline{
     stage("clean workspace"){
       steps{
         cleanWs()
+         sh 'mvn clean package -DskipTests'
       }
     }
     stage("code"){
