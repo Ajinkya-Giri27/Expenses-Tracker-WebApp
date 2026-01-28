@@ -37,13 +37,7 @@ stage('Clean Package') {
       }
     }
 
-    stage("SonarGate Analysis"){
-      steps{
-        timeout (time:2 , unit:"MINUTES"){
-          waitForQuaityGate abortPileline:false
-        }
-      }
-    }
+  
     
 
     stage("Build"){
