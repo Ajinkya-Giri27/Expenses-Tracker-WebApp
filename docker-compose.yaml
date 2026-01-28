@@ -28,7 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: Test@123
       MYSQL_DATABASE: expenses_tracker
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - /home/ubuntu/mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
