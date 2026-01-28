@@ -7,6 +7,11 @@ pipeline{
   }
   stages{
 
+    stage("Clean Workspace"){
+      steps{
+        cleanWs()
+      }
+    }
     
     stage("code"){
       steps{
@@ -14,15 +19,7 @@ pipeline{
       }
     }
 
-    
-stage('Clean Package') {
-    steps {
-        sh '''
-        chmod +x mvnw
-        ./mvnw clean package -DskipTests
-        '''
-    }
-}
+  
     
     stage("SonarQube Analysis"){
       steps{
@@ -37,7 +34,11 @@ stage('Clean Package') {
       }
     }
 
-  
+  stage("Owasp Dependency Check"){
+    steps{
+      
+    }
+  }
     
 
     stage("Build"){
