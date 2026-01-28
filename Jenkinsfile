@@ -36,7 +36,7 @@ pipeline{
 
   stage("Owasp Dependency Check"){
     steps{
-      
+      echo "heloo owasp"
     }
   }
     
