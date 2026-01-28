@@ -19,6 +19,8 @@ pipeline{
       steps{
         withSonarQubeEnv("sonar")
         {
+           sh "chmod +x mvnw"
+            sh "./mvnw clean package -DskipTests"
           sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Expenses-tracker -Dsonar.projectKey=Expensese-tracker -Dsonar.java.binaries=target/classes"
         }
       }
