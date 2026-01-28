@@ -17,7 +17,7 @@ pipeline{
       steps{
         withSonarQubeEnv("sonar-server")
         {
-          sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName = expenses-tracker -Dsonar.projectKey = expensese-tracker"
+          sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=expenses-tracker -Dsonar.projectKey=expensese-tracker"
         }
       }
     }
