@@ -26,11 +26,7 @@ pipeline{
     }
 
 
-     stage("clean package"){
-      steps{
-       sh 'mvn clean package -DskipTests'
-      }
-    }
+     
 
     stage("SonarQube Analysis"){
       steps{
