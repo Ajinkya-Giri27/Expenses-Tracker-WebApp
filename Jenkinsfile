@@ -34,12 +34,27 @@ pipeline{
       }
     }
 
-  stage("Owasp Dependency Check"){
-    steps{
-      dependencyCheck additionalarguments : " --scan ./ " , odcInstallation : "dc"
-      dependencyCheckPublisher : "**/dependency-check-report.xml"
+stage('Dependency Check') {
+    steps {
+        sh '''
+        dependency-check \
+          --project "Expenses-Tracker" \
+          --scan . \
+          --format HTML \
+          --out dependency-check-report \
+          --disableAssembly
+        '''
+        publishHTML(target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'dependency-check-report',
+            reportFiles: 'dependency-check-report.html',
+            reportName: 'OWASP Dependency Check'
+        ])
     }
-  }
+}
+
     
 
     stage("Build"){
