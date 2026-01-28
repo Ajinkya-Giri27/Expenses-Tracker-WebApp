@@ -19,22 +19,29 @@ pipeline{
       }
     }
 
-     stage("SonarQube Analysis"){
-      steps{
-        withSonarQubeEnv("sonar")
-        {
-          sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=expenses-tracker -Dsonar.projectKey=expensese-tracker"
-        }
-      }
-    }
-
-    
     stage("Build"){
       steps{
         sh "docker build -t expenses-tracker ."
       }
     }
 
+
+     stage("clean package"){
+      steps{
+       sh 'mvn clean package -DskipTests'
+      }
+    }
+
+    stage("SonarQube Analysis"){
+      steps{
+        withSonarQubeEnv("sonar")
+        {
+          sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=expenses-tracker -Dsonar.projectKey=expensese-tracker -Dsonar.java.binaries=target/classes"
+        }
+      }
+    }
+
+    
     stage("Push to Docker Hub"){
       steps{
        withCredentials([usernamePassword(
