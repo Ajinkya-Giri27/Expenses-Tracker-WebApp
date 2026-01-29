@@ -51,13 +51,7 @@ stage('Dependency Check') {
 
     stage('Trivy Filesystem Scan') {
     steps {
-        sh '''
-          trivy fs \
-            --format template \
-            --template "@html.tpl" \
-            --output trivy-fs-report.html \
-            .
-        '''
+        sh " trivy fs --format table -o trivy-fs-report.html ."
     }
 }
 
