@@ -77,16 +77,18 @@ stage('Dependency Check') {
       }
     }
 
-    post { 
-      always {
-        publishHTML(target: [ reportDir: '.', reportFiles: 'trivy-fs-report.html', reportName: 'Trivy Filesystem Scan Report', keepAll: true, alwaysLinkToLastBuild: true ]) 
-      }
-    }
+    
 
    stage("Deploy"){
       steps{
         sh "docker compose up -d"
       }
+     
+     post { 
+      always {
+        publishHTML(target: [ reportDir: '.', reportFiles: 'trivy-fs-report.html', reportName: 'Trivy Filesystem Scan Report', keepAll: true, alwaysLinkToLastBuild: true ]) 
+      }
+    }
     }
 
 
