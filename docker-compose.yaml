@@ -11,12 +11,7 @@ services:
       - "8080:8080"
     networks:
       - expenses-app-nw
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000 || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 60s
+
     depends_on:
       - mysql_db
     restart: always
@@ -33,13 +28,7 @@ services:
       - "3306:3306"
     networks:
       - expenses-app-nw
-    healthcheck:
-      test:
-        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pTest@123"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 60s
+   
     restart: always
 
 networks:
